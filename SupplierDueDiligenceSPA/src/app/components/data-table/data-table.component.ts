@@ -7,6 +7,7 @@ import { ProviderDetailsComponent } from '../provider-details/provider-details.c
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateProviderComponent } from '../update-provider/update-provider.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { ScreeningDialogComponent } from '../screening-dialog/screening-dialog.component';
 
 @Component({
   selector: 'app-data-table',
@@ -126,6 +127,13 @@ export class DataTableComponent implements OnInit {
   }
 
   performScreening(provider: ProviderModel) {
-    // Implement logic for screening
+    const dialogRef = this.dialog.open(ScreeningDialogComponent, {
+      width: '600px',
+      data: { providerId: provider.id },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Screening dialog closed');
+    });
   }
 }

@@ -1,9 +1,8 @@
+make dialog more beautiful
 
-implement performScreening on data table component
-create a new service for screening
-popup de cruce
-
-
+XXX implement performScreening on data table component
+XXX popup de cruce
+XXX create a new service for screening
 XXX configure the service so that real data can come in
 XXX implement showCompleteInfo on data table component
 XXX implement updateProvider on data table component

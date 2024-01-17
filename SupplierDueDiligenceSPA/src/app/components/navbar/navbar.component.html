@@ -5,7 +5,8 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <!-- Use the (click) event to navigate to "/app" -->
+    <button mat-menu-item (click)="navigateToApp()">
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
