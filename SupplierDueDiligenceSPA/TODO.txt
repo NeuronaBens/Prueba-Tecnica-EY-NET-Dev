@@ -1,0 +1,11 @@
+
+implement performScreening on data table component
+create a new service for screening
+popup de cruce
+
+
+XXX configure the service so that real data can come in
+XXX implement showCompleteInfo on data table component
+XXX implement updateProvider on data table component
+XXX implement deleteProvider on data table component
+XXX ordenar por ultima edición

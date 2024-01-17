@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>{{ data.legalName }} Details</h2>
+<mat-dialog-content>
+  <p><strong>Trade Name:</strong> {{ data.tradeName }}</p>
+  <p><strong>Tax ID:</strong> {{ data.taxId }}</p>
+  <p><strong>Phone Number:</strong> {{ data.phoneNumber }}</p>
+  <p><strong>Email:</strong> {{ data.email }}</p>
+  <p><strong>Website:</strong> {{ data.website }}</p>
+  <p><strong>Physical Address:</strong> {{ data.physicalAddress }}</p>
+  <p><strong>Country:</strong> {{ data.country }}</p>
+  <p><strong>Annual Revenue (USD):</strong> {{ data.annualRevenueUSD }}</p>
+  <p><strong>Last Edited:</strong> {{ data.lastEdited | date : "short" }}</p>
+  <!-- Add more details as needed -->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

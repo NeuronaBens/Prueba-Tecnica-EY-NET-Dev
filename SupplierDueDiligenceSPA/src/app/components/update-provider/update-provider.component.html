@@ -1,0 +1,76 @@
+<h2 mat-dialog-title>Update Provider</h2>
+<mat-dialog-content>
+  <form [formGroup]="providerForm">
+    <mat-form-field>
+      <label for="legalName">Legal Name</label>
+      <input
+        matInput
+        placeholder="Legal Name"
+        formControlName="legalName"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="tradeName">Trade Name</label>
+      <input matInput placeholder="Trade Name" formControlName="tradeName" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="taxId">Tax ID</label>
+      <input matInput placeholder="Tax ID" formControlName="taxId" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        matInput
+        placeholder="Phone Number"
+        formControlName="phoneNumber"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="email">Email</label>
+      <input matInput placeholder="Email" formControlName="email" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="website">Website</label>
+      <input matInput placeholder="Website" formControlName="website" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="physicalAddress">Physical Address</label>
+      <input
+        matInput
+        placeholder="Physical Address"
+        formControlName="physicalAddress"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="country">Country</label>
+      <input matInput placeholder="Country" formControlName="country" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <label for="annualRevenueUSD">Annual Revenue (USD)</label>
+      <input
+        matInput
+        placeholder="Annual Revenue (USD)"
+        formControlName="annualRevenueUSD"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input type="hidden" formControlName="id" />
+    </mat-form-field>
+    <mat-form-field>
+      <input type="hidden" formControlName="lastEdited" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="updateProvider()">Update</button>
+  <button mat-button (click)="close()">Cancel</button>
+</mat-dialog-actions>
