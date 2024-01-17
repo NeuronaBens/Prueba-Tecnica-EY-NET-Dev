@@ -1,0 +1,6 @@
+@SupplierDueDiligenceCrosscheckAPI_HostAddress = http://localhost:5023
+
+GET {{SupplierDueDiligenceCrosscheckAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
