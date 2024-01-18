@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-update-provider',
@@ -42,13 +41,15 @@ export class UpdateProviderComponent {
     this.providerForm = this.formBuilder.group({
       id: [data.id],
       legalName: [
-        { value: data.legalName, disabled: true },
-        Validators.required,
+        {
+          value: data.legalName,
+          disabled: true,
+        },
       ],
       tradeName: [data.tradeName],
-      taxId: [data.taxId],
-      phoneNumber: [data.phoneNumber],
-      email: [data.email, [Validators.required, Validators.email]],
+      taxId: [data.taxId, Validators.pattern(/^\d{11}$/)],
+      phoneNumber: [data.phoneNumber, Validators.pattern(/^\d+$/)],
+      email: [data.email],
       website: [data.website],
       physicalAddress: [data.physicalAddress],
       country: [data.country],
@@ -59,8 +60,21 @@ export class UpdateProviderComponent {
 
   updateProvider(): void {
     if (this.providerForm.valid) {
-      const updatedProvider: ProviderModel = this.providerForm.value;
+      // Get the value of legalName from the form
+      const legalNameValue = this.providerForm.controls['legalName'].value;
+
+      // Get the rest of the form values
+      const updatedProvider: ProviderModel = {
+        ...this.providerForm.value,
+        legalName: legalNameValue,
+      };
+
+      console.log(updatedProvider);
       this.dialogRef.close(updatedProvider);
+    } else {
+      alert(
+        'Please fill in all required fields and ensure they are correctly formatted.'
+      );
     }
   }
 
