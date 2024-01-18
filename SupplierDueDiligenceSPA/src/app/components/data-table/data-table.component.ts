@@ -8,11 +8,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { UpdateProviderComponent } from '../update-provider/update-provider.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { ScreeningDialogComponent } from '../screening-dialog/screening-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-data-table',
   standalone: true,
-  imports: [MatPaginatorModule, MatTableModule],
+  imports: [MatPaginatorModule, MatTableModule, MatButtonModule],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.css',
 })
