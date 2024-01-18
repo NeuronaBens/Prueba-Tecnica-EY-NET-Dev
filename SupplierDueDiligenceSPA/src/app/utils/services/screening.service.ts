@@ -12,11 +12,10 @@ export class ScreeningService {
     providerId: number,
     highRiskListIds: number[]
   ): Promise<{ IsOnHighRiskLists: boolean }> {
-    const url = `${
-      this.apiUrl
-    }/${providerId}/onHighRiskLists?highRiskListIds=${highRiskListIds.join(
-      ','
-    )}`;
+    //create correct url structure
+    const url = `${this.apiUrl}/${providerId}/onHighRiskLists?${highRiskListIds
+      .map((id) => `highRiskListIds=${id}`)
+      .join('&')}`;
 
     return fetch(url)
       .then((response) => {
