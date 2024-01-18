@@ -16,6 +16,22 @@
       </div>
     </div>
   </div>
+  <table *ngIf="screeningResult">
+    <thead>
+      <tr>
+        <th>Result</th>
+        <!-- Add additional table headers if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {{ screeningResult.isHighRisk ? "High Risk" : "Not High Risk" }}
+        </td>
+        <!-- Display additional information in other columns if needed -->
+      </tr>
+    </tbody>
+  </table>
   <div mat-dialog-actions>
     <button mat-button class="action-button" (click)="performScreening()">
       Perform Screening

@@ -19,6 +19,7 @@ export class ScreeningDialogComponent {
   providerId: number;
   highRiskLists: any[] = [];
   selectedLists: any[] = [];
+  screeningResult: { isHighRisk: boolean } | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<ScreeningDialogComponent>,
@@ -57,13 +58,9 @@ export class ScreeningDialogComponent {
         selectedListsLimited.map((list) => list.id)
       )
       .then((result) => {
-        if (result.IsOnHighRiskLists) {
-          alert('The company is High Risk');
-        } else {
-          alert('Screening result: false');
-        }
+        this.updateResultTable(result);
         // Close the dialog
-        this.dialogRef.close();
+        //this.dialogRef.close();
       })
       .catch((error) => {
         console.error('Error performing screening:', error);
@@ -71,6 +68,13 @@ export class ScreeningDialogComponent {
       });
   }
 
+  updateResultTable(result: any) {
+    // Assume you have a property like `screeningResults` in your component
+    this.screeningResult = {
+      isHighRisk: result.IsOnHighRiskLists,
+      // You can include additional information from the result if needed
+    };
+  }
   cancel() {
     this.dialogRef.close();
   }
