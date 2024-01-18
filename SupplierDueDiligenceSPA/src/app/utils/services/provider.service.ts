@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Observer } from 'rxjs';
 import { ProviderModel } from '../models/provider';
-import axios from 'axios';
 
 @Injectable({
   providedIn: 'root',
