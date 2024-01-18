@@ -46,19 +46,18 @@ export class ProviderService {
   }
 
   getProviders(): Observable<ProviderModel[]> {
-    return new Observable<ProviderModel[]>(
-      (observer: Observer<ProviderModel[]>) => {
-        axios
-          .get<ProviderModel[]>(this.apiUrl)
-          .then((response) => {
-            observer.next(response.data);
-            observer.complete();
-          })
-          .catch((error) => {
-            observer.error(error);
-          });
-      }
-    );
+    return new Observable((observer: Observer<ProviderModel[]>) => {
+      fetch(`${this.apiUrl}`)
+        .then((response) => response.json())
+        .then((data) => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+          observer.complete();
+        });
+    });
   }
 
   getProviderById(id: number): Observable<ProviderModel> {
