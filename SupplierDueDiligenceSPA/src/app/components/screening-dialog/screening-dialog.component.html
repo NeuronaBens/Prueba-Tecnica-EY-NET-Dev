@@ -2,7 +2,7 @@
   <h2 mat-dialog-title class="dialog-title">High Risk Screening</h2>
   <div mat-dialog-content>
     <div>
-      <label>Select High Risk Lists:</label>
+      <label>Select High Risk Lists to Crosscheck:</label>
       <div class="checkbox-group">
         <div *ngFor="let list of highRiskLists" class="checkbox-item">
           <input
@@ -30,17 +30,11 @@
       </tr>
     </tbody>
   </table>
+
   <div mat-dialog-actions>
-    <button mat-button class="action-button" (click)="performScreening()">
+    <button mat-button color="primary" (click)="performScreening()">
       Perform Screening
     </button>
-    <button
-      mat-button
-      class="action-button"
-      mat-dialog-close
-      (click)="cancel()"
-    >
-      Close
-    </button>
+    <button mat-button mat-dialog-close (click)="cancel()">Close</button>
   </div>
 </div>

@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ScreeningService } from '../../utils/services/screening.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-screening-dialog',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatButtonModule],
   templateUrl: './screening-dialog.component.html',
   styleUrl: './screening-dialog.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

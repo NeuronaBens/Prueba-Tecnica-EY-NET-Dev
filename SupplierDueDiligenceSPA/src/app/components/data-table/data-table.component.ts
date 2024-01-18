@@ -75,7 +75,6 @@ export class DataTableComponent implements OnInit {
       if (result) {
         this.providerService.updateProvider(result.id, result).subscribe(
           (updatedProvider: ProviderModel) => {
-            console.log('Updated provider:', updatedProvider);
             this.updateDataSource(updatedProvider);
           },
           (error) => {
@@ -99,7 +98,6 @@ export class DataTableComponent implements OnInit {
   deleteProvider(provider: ProviderModel) {
     this.providerService.deleteProvider(provider.id).subscribe(
       () => {
-        console.log('Provider deleted successfully:', provider);
         this.deleteFromDataSource(provider);
       },
       (error) => {

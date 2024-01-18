@@ -1,14 +1,48 @@
+.screening-dialog {
+  font-family: "Arial", sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dialog-title {
+  color: #333;
+  margin-bottom: 15px;
+}
+
 .checkbox-group {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 15px;
+  margin-bottom: 10px;
 }
 
 .checkbox {
   margin-right: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }

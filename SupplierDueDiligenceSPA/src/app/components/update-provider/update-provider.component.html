@@ -71,6 +71,9 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="updateProvider()">Update</button>
-  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button mat-raised-button (click)="updateProvider()">
+    Update
+  </button>
+  <span class="spacer"></span>
+  <button mat-raised-button mat-dialog-close (click)="close()">Cancel</button>
 </mat-dialog-actions>
