@@ -36,6 +36,10 @@ export class ScreeningDialogComponent {
     });
   }
 
+  checkboxClicked(list: any) {
+    this.selectedLists = this.highRiskLists.filter((list) => list.checked);
+  }
+
   performScreening() {
     // Check if at least one checkbox is selected
     const selectedLists = this.highRiskLists.filter((list) => list.checked);
@@ -45,16 +49,10 @@ export class ScreeningDialogComponent {
       return;
     }
 
-    // Limit the selection to three lists
-    const selectedListsLimited = selectedLists.slice(0, 3);
-
-    console.log('Performing screening for Provider ID:', this.providerId);
-    console.log('Selected High Risk Lists:', selectedListsLimited);
-
     this.screeningService
       .isProviderOnHighRiskLists(
         this.providerId,
-        selectedListsLimited.map((list) => list.id)
+        selectedLists.map((list) => list.id)
       )
       .subscribe((result) => {
         this.updateResultTable(result);

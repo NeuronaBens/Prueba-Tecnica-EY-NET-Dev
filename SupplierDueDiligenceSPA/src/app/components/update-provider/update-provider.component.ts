@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-update-provider',
@@ -40,7 +41,10 @@ export class UpdateProviderComponent {
   ) {
     this.providerForm = this.formBuilder.group({
       id: [data.id],
-      legalName: [data.legalName, Validators.required],
+      legalName: [
+        { value: data.legalName, disabled: true },
+        Validators.required,
+      ],
       tradeName: [data.tradeName],
       taxId: [data.taxId],
       phoneNumber: [data.phoneNumber],

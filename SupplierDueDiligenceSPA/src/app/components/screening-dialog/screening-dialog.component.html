@@ -10,6 +10,7 @@
             id="{{ list.id }}"
             [(ngModel)]="list.checked"
             class="checkbox"
+            (change)="checkboxClicked(list)"
           />
           <label for="{{ list.id }}">{{ list.name }}</label>
         </div>
@@ -32,7 +33,12 @@
   </table>
 
   <div mat-dialog-actions>
-    <button mat-button color="primary" (click)="performScreening()">
+    <button
+      mat-button
+      color="primary"
+      (click)="performScreening()"
+      [disabled]="selectedLists.length > 3"
+    >
       Perform Screening
     </button>
     <button mat-button mat-dialog-close (click)="cancel()">Close</button>
