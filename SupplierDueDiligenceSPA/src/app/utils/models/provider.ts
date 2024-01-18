@@ -1,5 +1,3 @@
-// provider.model.ts
-
 export interface ProviderModel {
   id: number;
   legalName: string;

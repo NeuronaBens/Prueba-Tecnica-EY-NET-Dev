@@ -60,7 +60,6 @@ export class DataTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      // You can perform actions after the dialog is closed, if needed
     });
   }
 
@@ -73,13 +72,9 @@ export class DataTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: ProviderModel) => {
       if (result) {
-        // Call your provider service's updateProvider method here
         this.providerService.updateProvider(result.id, result).subscribe(
           (updatedProvider: ProviderModel) => {
             console.log('Updated provider:', updatedProvider);
-
-            // Optionally, you can update the local data source
-            // Assuming you have a method to update the data in the table
             this.updateDataSource(updatedProvider);
           },
           (error) => {
@@ -91,24 +86,19 @@ export class DataTableComponent implements OnInit {
   }
 
   updateDataSource(updatedProvider: ProviderModel) {
-    // Assuming you have a method to update the data in the table
     const index = this.providers.findIndex((p) => p.id === updatedProvider.id);
     if (index !== -1) {
       this.providers[index] = updatedProvider;
-      this.dataSource.data = this.providers.slice(); // Update the data source
-
+      this.dataSource.data = this.providers.slice();
       this.cdr.detectChanges(); // Trigger change detection
     }
   }
 
   // delete provider
   deleteProvider(provider: ProviderModel) {
-    // Call your provider service's deleteProvider method here
     this.providerService.deleteProvider(provider.id).subscribe(
       () => {
         console.log('Provider deleted successfully:', provider);
-        // Optionally, you can update the local data source
-        // Assuming you have a method to update the data in the table
         this.deleteFromDataSource(provider);
       },
       (error) => {
@@ -118,7 +108,6 @@ export class DataTableComponent implements OnInit {
   }
 
   deleteFromDataSource(deletedProvider: ProviderModel) {
-    // Assuming you have a method to update the data in the table
     const index = this.providers.findIndex((p) => p.id === deletedProvider.id);
     if (index !== -1) {
       this.providers.splice(index, 1);

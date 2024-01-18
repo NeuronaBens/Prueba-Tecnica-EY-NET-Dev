@@ -19,7 +19,7 @@ export class HighRiskListService {
       })
       .catch((error) => {
         console.error('Error:', error);
-        throw error; // You might want to handle the error appropriately in your application
+        throw error;
       });
   }
 }

@@ -47,11 +47,9 @@ export class ScreeningDialogComponent {
     // Limit the selection to three lists
     const selectedListsLimited = selectedLists.slice(0, 3);
 
-    // Implement logic to perform screening with selectedLists and providerId
     console.log('Performing screening for Provider ID:', this.providerId);
     console.log('Selected High Risk Lists:', selectedListsLimited);
 
-    // Call the screening service
     this.screeningService
       .isProviderOnHighRiskLists(
         this.providerId,
@@ -59,20 +57,15 @@ export class ScreeningDialogComponent {
       )
       .then((result) => {
         this.updateResultTable(result);
-        // Close the dialog
-        //this.dialogRef.close();
       })
       .catch((error) => {
         console.error('Error performing screening:', error);
-        // You might want to handle the error appropriately in your application
       });
   }
 
   updateResultTable(result: any) {
-    // Assume you have a property like `screeningResults` in your component
     this.screeningResult = {
       isHighRisk: result.IsOnHighRiskLists,
-      // You can include additional information from the result if needed
     };
   }
   cancel() {

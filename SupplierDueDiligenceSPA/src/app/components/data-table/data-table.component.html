@@ -1,8 +1,4 @@
-<!-- data-table.component.html -->
-
-<!-- Add this line to your template -->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Define your columns -->
   <ng-container matColumnDef="legalName">
     <th mat-header-cell *matHeaderCellDef>Legal Name</th>
     <td mat-cell *matCellDef="let provider">{{ provider.legalName }}</td>
@@ -11,20 +7,15 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let provider">
-      <!-- Add your action buttons or links here -->
       <button (click)="showCompleteInfo(provider)">Show Info</button>
       <button (click)="updateProvider(provider)">Update</button>
       <button (click)="deleteProvider(provider)">Delete</button>
       <button (click)="performScreening(provider)">Screening</button>
     </td>
   </ng-container>
-
-  <!-- Include the columns in the table -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-
-<!-- Add the paginator -->
 <mat-paginator
   [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons
