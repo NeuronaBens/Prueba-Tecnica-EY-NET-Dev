@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HighRiskList } from '../models/high-risk-list';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +10,18 @@ export class HighRiskListService {
 
   constructor() {}
 
-  getHighRiskLists(): Promise<HighRiskList[]> {
-    return fetch(this.apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        throw error;
-      });
+  getHighRiskLists(): Observable<HighRiskList[]> {
+    return new Observable((observer: Observer<HighRiskList[]>) => {
+      fetch(this.apiUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+          observer.complete();
+        });
+    });
   }
 }

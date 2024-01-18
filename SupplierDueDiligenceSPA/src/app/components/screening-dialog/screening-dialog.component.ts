@@ -30,7 +30,7 @@ export class ScreeningDialogComponent {
     this.providerId = data.providerId;
 
     // Fetch high-risk lists
-    this.highRiskListService.getHighRiskLists().then((lists) => {
+    this.highRiskListService.getHighRiskLists().subscribe((lists) => {
       this.highRiskLists = lists;
     });
   }
@@ -55,11 +55,8 @@ export class ScreeningDialogComponent {
         this.providerId,
         selectedListsLimited.map((list) => list.id)
       )
-      .then((result) => {
+      .subscribe((result) => {
         this.updateResultTable(result);
-      })
-      .catch((error) => {
-        console.error('Error performing screening:', error);
       });
   }
 
