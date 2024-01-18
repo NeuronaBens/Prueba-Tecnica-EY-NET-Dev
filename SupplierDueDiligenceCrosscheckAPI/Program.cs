@@ -57,7 +57,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // CORS
-app.UseCors(options => options.WithOrigins("https://localhost:4200", "http://localhost:4200").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+if (app.Environment.IsDevelopment()) { 
+    app.UseCors(options => options.WithOrigins("https://localhost:4200", "http://localhost:4200").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+}
 
 app.UseRouting();
 
