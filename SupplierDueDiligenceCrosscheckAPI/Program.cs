@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SupplierDueDiligenceCrosscheckAPI.Auth.Services;
 using SupplierDueDiligenceCrosscheckAPI.Models;
@@ -15,9 +16,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Database Configuration
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("InMemoryDatabase"));
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("InMemoryDatabase"));
 
 // Register Singletons
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -37,6 +40,14 @@ builder.Services.AddCors();
 
 // Health Checks
 builder.Services.AddHealthChecks();
+
+// Culture Configuration
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = new RequestCulture("en-US");
+    options.SupportedCultures = new[] { new System.Globalization.CultureInfo("en-US") };
+    options.SupportedUICultures = new[] { new System.Globalization.CultureInfo("en-US") };
+});
 
 var app = builder.Build();
 

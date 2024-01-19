@@ -1,0 +1,13 @@
+server name: (localdb)\mssqllocaldb
+
+Useful commands:
+
+- create migration:
+dotnet ef migrations add MigrationName
+
+- apply migration:
+dotnet ef database update
+
+- remove migration:
+dotnet ef migrations remove
+
