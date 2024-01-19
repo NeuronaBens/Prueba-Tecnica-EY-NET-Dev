@@ -1,81 +1,29 @@
 # ASP .NET Core Web API Deployment Guide
 
-1. Build the ASP.NET Core API:
+1. **Prepare the ASP.NET Core API:**
+   - Ensure the ASP.NET Core API is ready for deployment.
 
-```bash
-dotnet publish -c Release
-```
+2. **Set Up AWS Elastic Beanstalk:**
+   - Create a new Elastic Beanstalk application for the API.
+   - Establish an environment within Elastic Beanstalk to host the API.
 
-2. Create an AWS Elastic Beanstalk Application:
+3. **Deploy the API:**
+   - Use simple commands to package and deploy the API to Elastic Beanstalk.
 
-```bash
-aws elasticbeanstalk create-application --application-name SupplirDueDilligenceAPI
-```
-
-3. Create an Elastic Beanstalk Environment:
-
-```bash
-aws elasticbeanstalk create-environment --application-name SupplirDueDilligenceAPI --environment-name SupplirDueDilligenceAPI-env --solution-stack-name "64bit Amazon Linux 2 v5.7.0"
-```
-
-4. Deploy the ASP.NET Core API to Elastic Beanstalk:
-
-```bash
-cd bin/Release/netcoreapp3.1/publish
-zip -r SupplirDueDilligenceAPI.zip .
-aws elasticbeanstalk create-application-version --application-name SupplirDueDilligenceAPI --version-label v1 --source-bundle S3Bucket=your-s3-bucket-name,S3Key=SupplirDueDilligenceAPI.zip
-```
-
-5. Update the Elastic Beanstalk Environment:
-
-```bash
-aws elasticbeanstalk update-environment --environment-name SupplirDueDilligenceAPI-env --version-label v1
-```
-
-6. Monitor Deployment:
-
-Monitor the deployment progress using the Elastic Beanstalk console or AWS CLI until the environment status is `Ready`.
-
-7. Access the API:
-
-Once the deployment is complete, access the API using the Elastic Beanstalk environment URL provided in the AWS Management Console.
-
+4. **Access the API:**
+   - Once deployed, you can use the provided Elastic Beanstalk URL to access the API.
 
 # Angular SPA Deployment Guide
-1. Build the Angular SPA:
 
-```bash
-ng build --prod
-```
+1. **Build the Angular SPA:**
+   - Build the Angular Single Page Application (SPA) for deployment.
 
-2. Create an AWS S3 Bucket for Hosting:
+2. **Set Up AWS S3 Bucket:**
+   - Create an S3 bucket on AWS to host the SPA.
+   - Copy the Angular SPA files to the S3 bucket.
 
-```bash
-aws s3api create-bucket --bucket supplir-due-dilligence-spa-bucket --region your-preferred-region
-```
+3. **Configure S3 for Hosting:**
+   - Configure the S3 bucket to host the SPA as a website.
 
-3. Copy the Angular SPA files to S3:
-
-```bash
-aws s3 cp dist/SupplirDueDilligenceSPA s3://supplir-due-dilligence-spa-bucket/ --recursive
-```
-
-4. Configure S3 Bucket for Website Hosting:
-
-```bash
-aws s3 website s3://supplir-due-dilligence-spa-bucket/ --index-document index.html --error-document index.html
-```
-
-5. Create an AWS CloudFront Distribution:
-
-```bash
-aws cloudfront create-distribution --origin-domain-name supplir-due-dilligence-spa-bucket.s3.amazonaws.com
-```
-
-6. Monitor CloudFront Distribution:
-
-Monitor the CloudFront distribution creation using the AWS Management Console or AWS CLI until the distribution status is `Deployed`.
-
-7. Access the Angular SPA:
-
-Once the CloudFront distribution is deployed, access the Angular SPA using the provided CloudFront URL.
+4. **Access the Angular SPA:**
+   - Access the Angular SPA by navigating to the provided S3 bucket website endpoint.
