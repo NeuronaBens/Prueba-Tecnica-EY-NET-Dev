@@ -8,7 +8,7 @@
    - Establish an environment within Elastic Beanstalk to host the API.
 
 3. **Deploy the API:**
-   - Use simple commands to package and deploy the API to Elastic Beanstalk.
+   - Use commands to package and deploy the API to Elastic Beanstalk.
 
 4. **Access the API:**
    - Once deployed, you can use the provided Elastic Beanstalk URL to access the API.
